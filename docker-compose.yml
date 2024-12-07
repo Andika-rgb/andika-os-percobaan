@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  postgres:
+    build: ./postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_PASSWORD: rahasiasekali
+
+  backend:
+    build: ./backend
+    depends_on:
+      - postgres
+      - redis
+
+  redis:
+    build: ./redis
+    ports:
+      - "6379:6379"
+
+  prometheus:
+    build: ./prometheus
+    ports:
+      - "9090:9090"
+
+volumes:
+  postgres_data:

@@ -1,0 +1,4 @@
+FROM postgres:13
+ENV POSTGRES_DB=myapp
+ENV POSTGRES_PASSWORD=rahasiasekali
+EXPOSE 5432

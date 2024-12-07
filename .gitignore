@@ -1,0 +1,4 @@
+# Hindari commit kredensial
+*.env
+node_modules/
+*.log
